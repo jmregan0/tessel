@@ -3,7 +3,7 @@ var tessel = require('tessel');
 var climatelib = require('climate-si7020');
 
 
-var climate = climatelib.use(tessel.port['A']);
+var climate = climatelib.use(tessel.port['B']);
 
 climate.on('ready', function () {
   console.log('Connected to climate module');
@@ -26,15 +26,3 @@ climate.on('error', function(err) {
 
 
 
-// Turn one of the LEDs on to start.
-//tessel.led[2].on();
-
-// Blink!
-/*
-setInterval(function () {
-  tessel.led[2].toggle();
-  tessel.led[3].toggle();
-}, 300);
-
-console.log("I'm blinking! (Press CTRL + C to stop)");
-*/
