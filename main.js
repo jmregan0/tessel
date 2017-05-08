@@ -5,8 +5,8 @@ var servo = require('./servo/servo.js');
 //var jQuery = require('jquery');
 var servo1 = 1; // We have a servo plugged in at position 1
 var readTemp = true;
-var player = require('play-sound')(opts = {})
-
+// var player = require('play-sound')(opts = {})
+var exec = require('child_process').exec, child;
 
   servo.on('motorOn', function () {
     var position = 0;  //  Target position of the servo between 0 (min) and 1 (max).
@@ -17,9 +17,6 @@ var player = require('play-sound')(opts = {})
     //  Moving them towards each other = less movement range
     //  Moving them apart = more range, more likely to stall and burn out
     servo.configure(servo1, 0.05, 0.12, function () {
-      player.play('bryan.mp3', function(err){
-        if (err) throw err
-      })
       setInterval(function () {
         console.log('Position (in range 0-1):', position);
         //  Set servo #1 to position pos.
@@ -46,6 +43,8 @@ climate.on('ready', function () {
     climate.readTemperature('f', function (err, temp) {
       climate.readHumidity(function (err, humid) {
         if (+humid.toFixed(2) > 24.00 && readTemp){
+          child = exec('afplay bryan.mp3');
+          child();
           servo.emit('motorOn')
           readTemp = false;
         }

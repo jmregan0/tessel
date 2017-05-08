@@ -14,7 +14,10 @@
   "readme": "A bare bones Tessel 2 blinky script.",
   "dependencies": {
     "aplay": "^1.1.0",
+    "child_process": "^1.0.2",
+    "climate-si7020": "^0.1.1",
     "jquery": "^3.2.1",
-    "play-sound": "^1.1.1"
+    "play-sound": "^1.1.1",
+    "servo-pca9685": "^0.1.3"
   }
 }
